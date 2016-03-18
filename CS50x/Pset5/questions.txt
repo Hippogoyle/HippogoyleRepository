@@ -1,0 +1,57 @@
+0.  What is pneumonoultramicroscopicsilicovolacanoconiosis?
+        It is an english word that refers to a lung disease that is otherwise known as silicosis.
+1.  According to its man page, what does getrusage do?
+        Getrusage returns resource usage statistics for the calling process, which is the sum of 
+        resources used by all threads in the process.
+2.  Per that same man page, how many members are in a variable of type struct rusage?
+        16 members are in the rusage struct.      
+3.  Why do you think we pass before and after by reference (instead of by value) to calculate, 
+    even though we're not changing their contents?
+        Passing before and after by reference changes the original data and not a copy. 
+        So when the data is retrieved from other sources it is updated correctly.
+4.  Explain as precisly as possible, in a paragraph or more, how main goes about reading words from a file. 
+    In other words, convince us that you indeed understand how that function's for loop works.
+        First the for loop is designed to creat an int with fgetc which looks at a file (Fgetc) gets (fGETc) a char (fgetC).
+        As long as the file does not have the end-of-file condition it will run the loop afterwards 
+        grabbing the next char in the file.
+        The first step in the loop is an if statement to check that the char is an alphabet character or an end of line char (\n).
+        If the condition is true then it appends the char to the word array at the counter "index" location.  
+        Next it steps the "index" counter by one.  After updating it makes sure that the index is not larger 
+        than the defined constant LENGTH.  If it is longer than LENGTH it goes through the extra chars as long as the 
+        EOF condition isn't met and the char is an alpha char then resets the "index" counter for the next
+        word.
+        Else If the loop is false and the char was a numeral it will run through the remaining chars consuming them until an EOF condition
+        is met and the char is not an alpha or numeric char.  Afterwards it prepares the "index" counter for a new word by resetting
+        it to 0.
+        Else If the first to loops are false it checks that the index is greater than zero signifying a whole word.  
+        This then terminates the word with a \0 in word[index] and updates the words counter by pluse one.  
+        Next it starts the getrusage counter to clock the time it takes to check the workd against the dictionary file for a misspelling.
+        It then updates the time_check variable by adding the new time to the calculation and resets the index variable for the next 
+        word.
+5.  Why do you think we used fgetc to read each word's characters one at a time rather than use fscanf 
+    with a format string like "%s" to read whole words at a time?  Put another way, what problems might 
+    arise by relying on fscanf alone?
+        The fscanf %s would read a string of chars until whitespace is found: blank, newline and tab.  With this there is a 
+        potental to grab characters that were unwanted such as quotes and trying to check them along with the word against the dictionary
+        resulting in false negatives.
+6.  Why do you think we declared the parameters for check and load as const?
+        Const can be used to prevent modifications to variables and const pointers and constr references preventing changing
+        the data point to or referenced.  The compiler will prevent the code form compiling and alert you to a problem. 
+        So it ensures that the data isn't modified. (source: www.cprogrfamming.com/tutorial/const_correctness.html)
+7.  What data structure(s) did you use to implement your spell-checker? 
+        I used a hash table because that is what I did last year so I was more familiar with it and wanted to see if I
+        could make any improvements on it.
+        I defined the size of my hashtable at the top of the file so I could change it easily to optimize the speed.
+        I used malloc to make a new node to hold a word from the file while using fgetc in a nested loop taking each char to lower
+        Then I hashed that into my table.  I was going to try different hash techniques to see if I could find one optimized 
+        this assignment but for times sake I dropped it.  I did find a nice hash online that seemed to work well.   I doncumented it in 
+        comments in the file.
+8.  How slow was your code the first time you got it working correctly?
+        132.62 seconds with a hashtable size of 26 on kjv.txt.  I got it down to 19.07 with a much larger hash. To put it in 
+        context the staff solution ran at 18.89 on my computer.
+9.  What kinds of changes , if any, did you make to your code in order to improve its performance?
+        I changed the size of the hashtable to reduce collisions.  I was originall;y going to try a different hash algorithm
+        but for time sake abandoned the idea.  Maybe later after the i have completed my course I'll have another go at it.
+10. Do you feel that your code has any bottlenecks that you were not able to chip away at?
+        Yes, the hash algorithm is just something that I found online.  I wish that I knew a better way to create one myself.
+        Right now I'm just standing on the shoulders of giants I suppose.

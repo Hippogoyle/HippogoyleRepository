@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>headings</title>
+	</head>
+	<body>
+		<h1>One</h1>
+			<p>This a paragraph of stuff.</p>
+			<p>This is a second paragraph</p>
+		<h2>Two</h2>
+
+			<ul>
+				<li>Tristen</li>
+				<li>Emily</li>
+				<li>Dana</li>
+				<li>Amanda</li>
+				<li>Dale</li>
+				<li>Luke</li>
+				<li>Deborah</li>
+				<li>Daniel</li>
+				<li>Allison</li>
+			</ul>
+		<h3>Three</h3>
+			<table border = "123">
+				<tr>
+					<td>dog</td>
+					<td>cat</td>
+					<td>fish</td>
+				</tr>
+				<tr>
+					<td>Link</td>
+					<td>Catnis</td>
+					<td>No name</td>
+				</tr>
+			</table>
+	</body>
+<html>	
